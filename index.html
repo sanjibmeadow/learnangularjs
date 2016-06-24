@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Angular js Learn with fun || Sanjib</title>
+      	<link rel="shortcut icon" href="favicon.ico">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="custom.css">
+		<style>
+			.ng-dirty ~ .changed  {
+			    display: inline-block !important;
+			    /* color: #ccc; */
+			    margin-left: 17px;
+			    font-size: 10px;
+			}
+  
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+		<base href="/">
+	</head>
+	<body ng-app="myShoppingList" class="container">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Angular js Learn with fun</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="/">Home</a></li>
+	      <li><a href="/aboutus">Aboutus</a></li>
+	      <li><a href="/service">Service</a></li>
+	<li><a href="/contact">contact</a></li> 
+	    </ul>
+	  </div>
+	</nav>
+									
+		<h1 class="text-center "><b>MY PRODUCT LISTS</b></h1>
+		<div ng-view></div>
+		<div ng-controller="myCtrl" class="jumbotron ">
+				{{products}}
+			<ul class="list-group panel">
+				<li class="list-group-item" ng-repeat="product in products | filter : productFilter"><b>Product Name:</b> 
+				<span ng-show="!edit">{{product}}</span> <input ng-blur="edit = !edit" ng-show="edit" type="text" ng-model="product">
+				<span class="label label-success changed hide">changed</span>
+				<div class="pull-right">
+				<button ng-click="edit = !edit; editSave()" type="button" class="btn btn-info  btn-xs">{{textEdit}}</button>&nbsp;
+					<button ng-click="removeItem($index)" type="button" class="btn btn-danger  btn-xs">Remove</button>
+					</div>
+				</li>
+				<li class="list-group-item" >{{addMe}}</li>
+			</ul>
+		<div class="alert alert-danger">
+		  {{errortext}}
+		</div>
+		<input ng-model="productFilter.$" type="text" class="form-control" placeholder="Please enter product name for filter">
+		<br/>
+			<input ng-model="addMe" type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="">
+		<button ng-click="addItem()" type="button" class="btn btn-success btn-lg">Add</button>
+
+		</div>
+		
+
+
+
+
+
+
+
+
+		<!-- jQuery -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> -->
+		<!-- 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
+		<!-- Bootstrap JavaScript -->
+		<!-- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+
+		<!-- app -->
+		<script src="app.js"></script>
+	</body>
+</html>
